@@ -1,18 +1,46 @@
-## Getting Started
+# The application developed to manage and handle student’s information within theuniversity.
+• Basic attribute data types: numbers and strings
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+• Basic Classes: HandleFaculty, HandleDepartment, HandleCourse,
 
-## Folder Structure
+# HandleStudent
+#  HandleFaculty:
+a. Add a new faculty.
 
-The workspace contains two folders by default, where:
+b. List all faculties.
+# HandleDepartment:
+a. Add a new department.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+b. List all departments.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+c. Delete a department.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+# HandleCourse
+a. Add a new course (course name, course code, number of credits).
 
-## Dependency Management
+b. List all courses.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+c. Update course details.
+
+d. Delete a course.
+
+# HandleStudent
+a. Add a new student (name, ID, department, courses, marks for eachcourse, GPA, grade).
+
+b. List the required information for all students.
+
+c. Keep track of the total number of students enrolled in each course.
+
+d. Update student details.
+
+e. Delete a student.
+
+
+# The interface provide for the user to:
+o Add and list faculties.
+
+o Add, delete, and list departments.
+
+o Add, update, list, and delete courses.
+
+o Add, update, list (including the total number of students enrolled in each course), delete students.
