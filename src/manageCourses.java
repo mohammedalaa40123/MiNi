@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-public class manageCourses
-{
-    static public void execute(Scanner scanner)
-    {
+public class manageCourses {
+    static public void execute(Scanner scanner) {
+        Course.readCourses("src\\courses.txt");
+
         System.out.println("\nCOURSES");
         System.out.println("1. Add course");
         System.out.println("2. Update course");
@@ -30,8 +30,7 @@ public class manageCourses
             System.out.print("Enter course name: ");
             String coursename = scanner.nextLine();
 
-            if (!Course.checkExist(coursename))
-            {
+            if (!Course.checkExist(coursename)) {
                 return;
             }
 

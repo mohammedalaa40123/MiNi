@@ -25,19 +25,22 @@ public class Department
         }
     }
 
-    static public void addDepartment(String filename)
+    static public void addDepartment(String x)
+    {
+       
+            departments.add(x);
+        
+    }
+    static public void readDepartments(String filename)
     {
         File file = new File(filename);
         if (file.exists()) {
-            System.out.println("File " + filename + " exists.");
+            HashSet<String> facultiesFromFile = FileReadere.readFaculties(filename);
+            departments.addAll(facultiesFromFile);
         } else {
-            departments.add(filename);
+            System.out.println("File " + filename + " doesn't exist.");
         }
-        HashSet<String> facultiesFromFile = FileReadere.readFaculties(filename);
-        departments.addAll(facultiesFromFile);
-        
     }
-
     static public void deleteDepartment(String d)
     {
         if (!departments.remove(d))

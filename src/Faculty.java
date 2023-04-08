@@ -14,15 +14,18 @@ public class Faculty {
         return faculty; // always valid since there is no delete function in this class
     }
 
-    static public void addFaculty(String filename) {
+    static public void addFaculty(String x) {
+        faculties.add(x);
+    }
+
+    static public void readFaculties(String filename) {
         File file = new File(filename);
         if (file.exists()) {
-            System.out.println("File " + filename + " exists.");
+            HashSet<String> facultiesFromFile = FileReadere.readFaculties(filename);
+            faculties.addAll(facultiesFromFile);
         } else {
-            faculties.add(filename);
+            System.out.println("File " + filename + " exists.");
         }
-        HashSet<String> facultiesFromFile = FileReadere.readFaculties(filename);
-        faculties.addAll(facultiesFromFile);
     }
 
     static public void listAllFaculties() {
