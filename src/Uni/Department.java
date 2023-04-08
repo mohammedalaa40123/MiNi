@@ -1,40 +1,51 @@
 package Uni;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
 
-public class Department {
-    private static Map<String, List<String>> departments = new HashMap<>();
+public class Department
+{
+    static private HashSet<String> departments = new HashSet<>();
+    private String department;
 
-    public List<String> getDepartment(String department) {
-        return departments.getOrDefault(department, new ArrayList<>());
+    public Department(String d)
+    {
+        department = d;
+        addDepartment(d);
     }
 
-    public static void addDepartment(String facultyName, String departmentName) {
-        List<String> departmentList = Faculty.getFaculty(facultyName);
-        departmentList.add(departmentName);
-        departments.put(facultyName, departmentList);
-        System.out.println("Added department: " + departmentName + " to faculty: " + facultyName);
-    }
+    public String getDepartment()
+    {
+        if (departments.contains(department))
+        {
+            return department;
+        }
 
-    public static void deleteDepartment(String facultyName, String departmentName) {
-        List<String> departmentList = departments.get(facultyName);
-        if (departmentList != null) {
-            departmentList.remove(departmentName);
-            System.out.println("Deleted department: " + departmentName + " from faculty: " + facultyName);
+        else
+        {
+            return "(deleted)";
         }
     }
 
-    static public List<String> listAllDepartments(String facultyName) {
-        List<String> departmentList = departments.getOrDefault(facultyName, new ArrayList<>());
-        System.out.println("List of departments in faculty: " + facultyName + " : ");
-        for (String i : departmentList)
+    static public void addDepartment(String d)
+    {
+        departments.add(d);
+    }
+
+    static public void deleteDepartment(String d)
+    {
+        if (!departments.remove(d))
+        {
+            System.out.println("department does not exist");
+        }
+    }
+
+    static public void listAllDepartments()
+    {
+        System.out.println("Departments are: ");
+
+        for (String i : departments)
         {
             System.out.println("- " + i);
         }
-        
-        return departmentList;
     }
 }

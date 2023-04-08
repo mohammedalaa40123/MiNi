@@ -1,28 +1,34 @@
 package Uni;
+import java.util.HashSet;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+public class Faculty
+{
+    static private HashSet<String> faculties = new HashSet<>();
+    private String faculty;
 
-public class Faculty {
-    private static Map<String, List<String>> faculties = new HashMap<>();
-
-    static public List<String> getFaculty(String facultyname) {
-        return faculties.getOrDefault(facultyname, new ArrayList<>());    }
-
-    static public void addFaculty(String facultyname) {
-        faculties.put(facultyname, new ArrayList<>());
-        System.out.println("Added faculty: " + facultyname);
+    public Faculty(String x)
+    {
+        faculty = x;
+        addFaculty(x);
     }
 
-    static public List<String> listAllFaculties() {
-        List<String> facultyList = new ArrayList<>(faculties.keySet());
-        System.out.println("List of faculties: " );
-        for (String i : facultyList)
+    public String getFaculty()
+    {
+        return faculty; // always valid since there is no delete function in this class
+    }
+
+    static public void addFaculty(String x)
+    {
+        faculties.add(x);
+    }
+
+    static public void listAllFaculties()
+    {
+        System.out.println("Faculties are: ");
+
+        for (String i : faculties)
         {
             System.out.println("- " + i);
         }
-        return facultyList;
     }
 }

@@ -1,4 +1,5 @@
 package Uni;
+
 import java.util.Scanner;
 
 public class App {
@@ -12,7 +13,9 @@ public class App {
             "                                                                                    (_)\n";
       System.out.println(Eui);
       Scanner scanner = new Scanner(System.in);
+
       while (true) {
+
          System.out.println("Enter your choice:");
          System.out.println("1. Manage faculties");
          System.out.println("2. Manage departments");
@@ -22,13 +25,16 @@ public class App {
 
          int choice = scanner.nextInt();
          scanner.nextLine();
+
          switch (choice) {
-            case 1:
+
+            case 1: // "1. Manage faculties"
                System.out.println("\nFACULTIES");
                System.out.println("1. Add faculty");
                System.out.println("2. List faculties");
                int facultyChoice = scanner.nextInt();
                scanner.nextLine();
+
                switch (facultyChoice) {
                   case 1:
                      System.out.print("Enter faculty name: ");
@@ -42,90 +48,84 @@ public class App {
                      System.out.println("Invalid choice!");
                }
                break;
-            case 2:
+
+            case 2: // "2. Manage departments"
                System.out.println("\nDEPARTMENTS");
                System.out.println("1. Add department");
                System.out.println("2. Delete department");
                System.out.println("3. List departments");
+
                int departmentChoice = scanner.nextInt();
-               scanner.nextLine(); 
+               scanner.nextLine();
+
                switch (departmentChoice) {
+
                   case 1:
-                     System.out.print("Enter faculty name: ");
-                     String facultyName = scanner.nextLine();
                      System.out.print("Enter department name: ");
                      String departmentName = scanner.nextLine();
-                     Department.addDepartment(facultyName, departmentName);
+                     Department.addDepartment(departmentName);
                      break;
                   case 2:
-                     System.out.print("Enter faculty name: ");
-                     facultyName = scanner.nextLine();
                      System.out.print("Enter department name: ");
                      departmentName = scanner.nextLine();
-                     Department.deleteDepartment(facultyName, departmentName);
+                     Department.deleteDepartment(departmentName);
                      break;
                   case 3:
-                     System.out.print("Enter faculty name: ");
-                     facultyName = scanner.nextLine();
-                     Department.listAllDepartments(facultyName);
+                     Department.listAllDepartments();
                      break;
                   default:
                      System.out.println("Invalid choice!");
                }
                break;
-            case 3:
+
+               
+            case 3: // "3. Manage courses"
                System.out.println("\nCOURSES");
                System.out.println("1. Add course");
                System.out.println("2. Update course");
                System.out.println("3. Delete course");
                System.out.println("4. List courses");
                System.out.println("5. Get total enrollment");
+               
                int courseChoice = scanner.nextInt();
                scanner.nextLine(); // consume the \n character
+
                switch (courseChoice) {
-                  case 1:
-                     System.out.print("Enter department name: ");
-                     String departmentName = scanner.nextLine();
+                  
+                  case 1: // "1. Add course"
+                     
                      System.out.print("Enter course name: ");
                      String courseName = scanner.nextLine();
-                     System.out.print("Enter course capacity: ");
-                     int capacity = scanner.nextInt();
-                     // addCourse(departmentName, courseName, capacity);
+                     System.out.print("Enter Course Code: ");
+                     String coursecode = scanner.nextLine();
+                     System.out.print("Enter Course number of credits:: ");
+                     int nofcredits = scanner.nextInt();
+                     Course.addCourse(courseName,coursecode, nofcredits);
                      break;
-                  case 2:
-                     System.out.print("Enter department name: ");
-                     departmentName = scanner.nextLine();
+
+                  case 2: //  "2. Update course"
+                     // masa7t el code
+                     break;
+                     
+                  case 3: //  "3. Delete course"
                      System.out.print("Enter course name: ");
                      courseName = scanner.nextLine();
-                     System.out.print("Enter new course capacity: ");
-                     capacity = scanner.nextInt();
-                     // updateCourse(departmentName, courseName, capacity);
+                     Course.deleteCourse(courseName);
                      break;
-                  case 3:
-                     System.out.print("Enter department name: ");
-                     departmentName = scanner.nextLine();
-                     System.out.print("Enter course name: ");
-                     courseName = scanner.nextLine();
-                     // deleteCourse(departmentName, courseName);
+                  case 4: //  "4. List courses"
+                     Course.listAllCourses();
                      break;
-                  case 4:
-                     System.out.print("Enter department name: ");
-                     departmentName = scanner.nextLine();
-                     System.out.print("Enter course name (type 'all' to list all courses in the department): ");
-                     courseName = scanner.nextLine();
-                     // listCourses(departmentName, courseName);
-                     break;
-                  case 5:
-                     System.out.print("Enter department name: ");
-                     departmentName = scanner.nextLine();
+                  case 5: //  "5. Get total enrollment"
                      System.out.print("Enter course name: ");
                      courseName = scanner.nextLine();
                      // int totalEnrollment = getTotalEnrollment(departmentName, courseName);
                      // System.out.println("Total enrollment: " + totalEnrollment);
                      break;
+
                   default:
                      System.out.println("Invalid choice!");
                }
+               
                break;
          }
          scanner.close();

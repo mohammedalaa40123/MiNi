@@ -72,6 +72,12 @@ public class Course
         }
     }
 
+    static public void addCourse(String name, String code, Integer credits)
+    {
+        Pair<String, Integer> temp = new Pair<String, Integer>(code, credits);
+        m.put(name, temp);
+    }
+
     static public void updateCourse(String name, String code, Integer credits)
     {
         // check with me first before doing anything in this function
