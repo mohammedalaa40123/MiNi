@@ -2,49 +2,43 @@ package Uni;
 
 import java.util.HashSet;
 
-public class Department
-{
+public class Department {
     static private HashSet<String> departments = new HashSet<>();
     private String department;
 
-    public Department(String d)
-    {
+    public Department(String d) {
         department = d;
         addDepartment(d);
     }
 
-    public String getDepartment()
-    {
-        if (departments.contains(department))
-        {
+    public String getDepartment() {
+        if (departments.contains(department)) {
             return department;
         }
 
-        else
-        {
+        else {
             return "(deleted)";
         }
     }
 
-    static public void addDepartment(String d)
-    {
+    static public void addDepartment(String d) {
         departments.add(d);
     }
 
-    static public void deleteDepartment(String d)
-    {
-        if (!departments.remove(d))
-        {
+    static public void deleteDepartment(String d) {
+        if (!departments.remove(d)) {
             System.out.println("department does not exist");
         }
     }
 
-    static public void listAllDepartments()
-    {
+    static public void listAllDepartments() {
+        if (departments.isEmpty()) {
+            System.out.println("No departments listed yet");
+            return;
+        }
         System.out.println("Departments are: ");
 
-        for (String i : departments)
-        {
+        for (String i : departments) {
             System.out.println("- " + i);
         }
     }
