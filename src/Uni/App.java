@@ -26,8 +26,7 @@ public class App {
          scanner.nextLine();
 
          switch (choice) {
-
-            case 1: // "1. Manage faculties"
+            case 1:// "1. Manage faculties"
                System.out.println("\nFACULTIES");
                System.out.println("1. Add faculty");
                System.out.println("2. List faculties");
@@ -86,7 +85,7 @@ public class App {
                System.out.println("5. Get total enrollment");
 
                int courseChoice = scanner.nextInt();
-               scanner.nextLine(); // consume the \n character
+               scanner.nextLine();
 
                switch (courseChoice) {
 
@@ -107,27 +106,26 @@ public class App {
                      Integer Newnofcredits;
                      System.out.print("Enter course name: ");
                      String coursename = scanner.nextLine();
-
                      if (Course.checkExist(coursename)) {
 
                         System.out.println("Would u like to edit course name? (y/n): ");
                         String ans = scanner.nextLine();
                         newCode = Course.getcourseInfo(coursename).getKey();
                         Newnofcredits = Course.getcourseInfo(coursename).getValue();
-
+                        String newName = coursename;
                         if (ans.equals("y")) {// edit 3
                            System.out.println("Enter new course name");
-                           String newName = scanner.nextLine();
+                           newName = scanner.nextLine();
                            System.out.println("Would u like to edit course code? (y/n): ");
                            ans = scanner.nextLine();
                            if (ans.equals("y")) {
-                              System.out.println("Enter new course name");
+                              System.out.println("Enter new course code");
                               newCode = scanner.nextLine();
                            }
                            System.out.println("Would u like to edit course number of credits? (y/n): ");
                            ans = scanner.nextLine();
                            if (ans.equals("y")) {
-                              System.out.println("Enter new course name");
+                              System.out.println("Enter new course number of credits");
                               Newnofcredits = scanner.nextInt();
                            }
                            Course.updateCourse(coursename, newName, newCode, Newnofcredits);
@@ -137,7 +135,7 @@ public class App {
                            System.out.println("Would u like to edit course code? (y/n): ");
                            ans = scanner.nextLine();
                            if (ans.equals("y")) {
-                              System.out.println("Enter new course name");
+                              System.out.println("Enter new course code:");
                               newCode = scanner.nextLine();
                               System.out.println("Would u like to edit course number of credits? (y/n): ");
                               ans = scanner.nextLine();
@@ -151,14 +149,13 @@ public class App {
                               System.out.println("Would u like to edit course number of credits? (y/n): ");
                               ans = scanner.nextLine();
                               if (ans.equals("y")) {
-                                 System.out.println("Enter new course name");
+                                 System.out.println("Enter new course number of");
                                  Newnofcredits = scanner.nextInt();
                               }
                               Course.updateCourse(coursename, Newnofcredits);
                            }
                         }
                      }
-
                      break;
 
                   case 3: // "3. Delete course"
@@ -172,14 +169,23 @@ public class App {
                   case 5: // "5. Get total enrollment"
                      System.out.print("Enter course name: ");
                      courseName = scanner.nextLine();
-                     // int totalEnrollment = getTotalEnrollment(departmentName, courseName);
-                     // System.out.println("Total enrollment: " + totalEnrollment);
+                     Integer nofstudents = Course.getNumberOfStudents(courseName);
+                     System.out
+                           .println("Number of Students enrolled in the course " + courseName + " is: " + nofstudents);
                      break;
 
                   default:
                      System.out.println("Invalid choice!");
                }
                break;
+
+
+            
+
+
+            
+
+            
 
             case 5: // "4. Manage Students"
                System.out.println("Thank U :D ");

@@ -22,6 +22,9 @@ public class Course {
 
         studentsEnrolled.put(name, studentsEnrolled.get(name) + 1);
     }
+    public static Integer getNumberOfStudents(String coursename){
+        return studentsEnrolled.get(coursename);
+    }
 
     public String getName() {
         if (courses.containsKey(courseName)) {
@@ -86,11 +89,14 @@ public class Course {
     static public void updateCourse(String name, String code) {
         Integer credits = courses.get(name).getValue();
         addCourse(name, code, credits);
+        studentsEnrolled.put(name, studentsEnrolled.get(name));
+
     } // updates only code
 
     static public void updateCourse(String name, Integer credits) {
         String code = courses.get(name).getKey();
         addCourse(name, code, credits);
+        studentsEnrolled.put(name, studentsEnrolled.get(name));
     } // updates only number of credits
 
     static public void updateCourse(String name, String Newname, String code, Integer credits) {
