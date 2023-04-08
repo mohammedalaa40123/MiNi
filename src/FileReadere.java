@@ -20,8 +20,25 @@ public class FileReadere {
         return faculties;
     }
 
+    static public HashSet<Course> readStudentCourses(String filename) {
+        HashSet<Course> studentcourses = new HashSet<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                String key = data[5];
+                String code = data[6];
+                Integer credits = Integer.parseInt(data[7]);
+                Course c = new Course(key, code, credits);
+                studentcourses.add(c);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return studentcourses;
+    }
 
-    static public HashMap<String, Integer> fileToHashMap1(String filePath) {
+    static public HashMap<String, Integer> studentsEnrolledfromfile(String filePath) {
         HashMap<String, Integer> map = new HashMap<>();
 
         try {
@@ -43,7 +60,9 @@ public class FileReadere {
         }
 
         return map;
-    }    static public HashMap<String, Pair<String, Integer>> fileToHashMap2(String filePath) {
+    }
+
+    static public HashMap<String, Pair<String, Integer>> coursesFromFile(String filePath) {
         HashMap<String, Pair<String, Integer>> map = new HashMap<>();
 
         try {
@@ -59,6 +78,32 @@ public class FileReadere {
                 Pair<String, Integer> temp = new Pair<String, Integer>(code, credits);
 
                 map.put(key, temp);
+            }
+
+            br.close();
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+
+        return map;
+    }
+
+
+    static public HashMap<String, Student> studentsfromfile(String filePath) {
+        HashMap<String, Student> map = new HashMap<>();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                String ID = data[0];
+                String name = data[1];
+                Faculty fac = new Faculty(data[2]);
+                Department dep = new Department(data[3]);
+                Double gpa = Double.parseDouble(data[4]);
+                Student s = new Student(name, ID, dep, fac, gpa);
+                map.put(ID, s);
             }
 
             br.close();

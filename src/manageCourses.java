@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class manageCourses {
     static public void execute(Scanner scanner) {
-        Course.readCourses("src\\courses.txt");
 
         System.out.println("\nCOURSES");
         System.out.println("1. Add course");

@@ -4,6 +4,13 @@ public class App
 {
     public static void main(String[] args)
     {
+        // Read Fata from files
+
+        Student.readCourses("src\\students.txt");
+        Department.readDepartments("src\\departments.txt");
+        Faculty.readFaculties("src\\faculties.txt");
+        Course.readCourses("src\\courses.txt");
+
         EUI.execute();
         Scanner scanner = new Scanner(System.in);
         Scanner stuff = scanner; // just because it looks cooler

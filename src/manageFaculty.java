@@ -4,7 +4,6 @@ public class manageFaculty
 {
     static public void execute(Scanner scanner)
     {
-        Faculty.readFaculties("src\\faculties.txt");
         System.out.println("\nFACULTIES");
         System.out.println("1. Add faculty");
         System.out.println("2. List faculties");

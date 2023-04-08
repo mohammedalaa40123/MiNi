@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 class manageDepartment {
     public static void execute(Scanner scanner) {
-        Department.readDepartments("src\\departments.txt");
         System.out.println("\nDEPARTMENTS");
         System.out.println("1. Add department");
         System.out.println("2. Delete department");

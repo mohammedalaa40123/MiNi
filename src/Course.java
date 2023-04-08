@@ -19,6 +19,11 @@ public class Course {
         courseCode = courses.get(name).getKey();
         noCredits = courses.get(name).getValue();
     }
+    public Course(String name,String code,Integer credits) {
+        courseName = name;
+        courseCode = code;
+        noCredits = credits;
+    }
 
     static public void enrollCourse(String x) {
         if (!courses.containsKey(x)) {
@@ -100,8 +105,8 @@ public class Course {
     static public void readCourses(String filename) {
         File file = new File(filename);
         if (file.exists()) {
-            HashMap<String, Pair<String, Integer>> coursesFromFile = FileReadere.fileToHashMap2(filename);
-            HashMap<String, Integer> studentsEnrolledfromfile = FileReadere.fileToHashMap1(filename);
+            HashMap<String, Pair<String, Integer>> coursesFromFile = FileReadere.coursesFromFile(filename);
+            HashMap<String, Integer> studentsEnrolledfromfile = FileReadere.studentsEnrolledfromfile(filename);
             courses = coursesFromFile;
             studentsEnrolled = studentsEnrolledfromfile;
         } else {

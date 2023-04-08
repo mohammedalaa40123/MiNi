@@ -4,6 +4,7 @@ public class manageStudents
 {
     static public void execute(Scanner scanner)
     {
+
         System.out.println("\nSTUDENTS");
         System.out.println("1. List all students");
         System.out.println("2. Add student");
