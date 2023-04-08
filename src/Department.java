@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.HashSet;
 
 public class Department
@@ -24,9 +25,17 @@ public class Department
         }
     }
 
-    static public void addDepartment(String d)
+    static public void addDepartment(String filename)
     {
-        departments.add(d);
+        File file = new File(filename);
+        if (file.exists()) {
+            System.out.println("File " + filename + " exists.");
+        } else {
+            departments.add(filename);
+        }
+        HashSet<String> facultiesFromFile = FileReadere.readFaculties(filename);
+        departments.addAll(facultiesFromFile);
+        
     }
 
     static public void deleteDepartment(String d)
