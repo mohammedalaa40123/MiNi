@@ -13,6 +13,10 @@ public class Student {
     private HashSet<Course> courses = new HashSet<>();
 
     public Student(String name, String ID, Department department, Faculty faculty, Double GPA) {
+        if (students.containsKey(ID)) {
+            System.out.println("student exist");
+            return;
+        }
         this.name = name;
         this.ID = ID;
         this.department = department;
@@ -52,12 +56,11 @@ public class Student {
     static public void readCourses(String filename) {
         File file = new File(filename);
         if (file.exists()) {
-            HashMap<String, Student> studentsfromfile = FileReadere.studentsfromfile(filename);
-            HashSet<Course> coursesfromfile = FileReadere.readStudentCourses(filename);
-            students = studentsfromfile;
+            FileReadere.studentsfromfile(filename);
             for (HashMap.Entry<String, Student> i : students.entrySet()) {
-                Student value = i.getValue();
-                value.courses = coursesfromfile;
+                Student stu = i.getValue();
+                HashSet<Course> coursesfromfile = FileReadere.readStudentCourses(filename, stu.ID);
+                stu.courses = coursesfromfile;
             }
 
         } else {
@@ -133,13 +136,3 @@ public class Student {
         }
     }
 }
-
-// Add a new student (name, ID, department, courses, marks for each
-// course, GPA, grade).
-// b. List the required information for all students.
-// c. Keep track of the total number of students enrolled in each course.
-// d. Update student details.
-// e. Delete a student
-
-// Add, update, list (including the total number of students enrolled in each
-// course), delete students.

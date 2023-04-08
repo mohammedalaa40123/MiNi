@@ -20,17 +20,20 @@ public class FileReadere {
         return faculties;
     }
 
-    static public HashSet<Course> readStudentCourses(String filename) {
+    static public HashSet<Course> readStudentCourses(String filename, String ID) {
         HashSet<Course> studentcourses = new HashSet<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                String key = data[5];
-                String code = data[6];
-                Integer credits = Integer.parseInt(data[7]);
-                Course c = new Course(key, code, credits);
-                studentcourses.add(c);
+                String idD = data[0];
+                if (idD.equals(ID)) {
+                    String key = data[5];
+                    String code = data[6];
+                    Integer credits = Integer.parseInt(data[7]);
+                    Course c = new Course(key, code, credits);
+                    studentcourses.add(c);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,9 +91,7 @@ public class FileReadere {
         return map;
     }
 
-
-    static public HashMap<String, Student> studentsfromfile(String filePath) {
-        HashMap<String, Student> map = new HashMap<>();
+    static public void studentsfromfile(String filePath) {
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -103,7 +104,6 @@ public class FileReadere {
                 Department dep = new Department(data[3]);
                 Double gpa = Double.parseDouble(data[4]);
                 Student s = new Student(name, ID, dep, fac, gpa);
-                map.put(ID, s);
             }
 
             br.close();
@@ -111,6 +111,5 @@ public class FileReadere {
             System.out.println("Error reading file: " + e.getMessage());
         }
 
-        return map;
     }
 }
